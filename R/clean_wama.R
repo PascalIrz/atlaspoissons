@@ -1,0 +1,56 @@
+#' Mise d'un df wama brut au format passerelle
+#'
+#' @param wama_brut Dataframe wama
+#' @param crs_init Numérique. Code EPSG du CRS initial
+#' @param crs_fin Numérique. Code EPSG du CRS de sortie
+#'
+#' @return Un dataframe au format souhaité avec les coordonnées reprojetées
+#' @export
+#'
+#' @importFrom dplyr bind_cols filter mutate select mutate_at vars
+#' @importFrom sf st_drop_geometry
+#' @importFrom stringr str_detect
+#' @importFrom tidyr pivot_longer
+#'
+#' @examples
+#' \dontrun{
+#' wama_propre <- wama_brut %>%
+#' clean_wama()
+#' }
+clean_wama <- function(wama_brut, crs_init = 2154, crs_fin = 4326)
+
+  {
+
+  coords <- get_coords(sf_obj = wama_brut,
+                       crs_init = crs_init,
+                       crs_fin = crs_fin)
+
+  wama <- wama_brut %>%
+    bind_cols(coords) %>% # ajout des coordonnées en wgs84
+    st_drop_geometry() %>% # suppression de la colonnes géométrie
+    dplyr::filter(!stringr::str_detect(CD_STAT, pattern = "Total")) %>% # suppression du total
+    pivot_longer(cols = ABH:VAX,
+                 names_to = "code_espece",
+                 values_to = "effectif") %>%
+    mutate(date_peche = stringr::str_sub(CD_STAT, -4, -1),
+           code_station = stringr::str_sub(CD_STAT, 1, -6),
+           organisme = "WAMA",
+           type_peche = "WAMA",
+           localisation = NA) %>%
+    select(code_exutoire = IDD,
+           code_station,
+           localisation,
+           x_wgs84 = X, y_wgs84 = Y,
+           date_peche,
+           organisme,
+           type_peche,
+           code_espece,
+           effectif) %>%
+    mutate_at(vars(code_station, localisation, date_peche),
+              as.character)
+
+  wama
+
+
+}
+

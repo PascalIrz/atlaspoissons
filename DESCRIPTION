@@ -1,11 +1,21 @@
 Package: atlas
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Pour produire l'atlas des poissons d'eau douce de Bretagne
+Version: 0.1.0.9000
+Author: Pascal Irz <pascal.irz@ofb.gouv.fr>
+Maintainer: Pascal Irz <pascal.irz@ofb.gouv.fr>
+Description: Homogénéiser les données d'inventaire piscicole, présenter les bassins versants
+    et effectuer quelques essais d'analyse en particulier graphique.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.1
+Imports: dplyr,
+    magrittr,
+    sf,
+    stringr,
+    tidyr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
