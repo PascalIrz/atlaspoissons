@@ -1,4 +1,4 @@
-#' Mise d'un df brut des pêches SD au format passerelle
+#' Mise d'un df brut des pêches fédés au format passerelle
 #'
 #' @param df_brut Dataframe données SD.
 #' @param crs_init Numérique. Code EPSG du CRS initial. Par défaut c'est 2154 (Lambert 93).
@@ -13,10 +13,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' sd_data_propre <- sd_data_brut %>%
-#' clean_sd()
+#' sd_fede_propre <- sd_fede_brut %>%
+#' clean_fede()
 #' }
-clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
+clean_fede <- function(df_brut, crs_init = 2154, crs_fin = 4326)
 
   {
 
@@ -31,24 +31,22 @@ clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
                  names_to = "code_espece",
                  values_to = "effectif") %>%
     mutate(code_station = NA,
-           date_peche = Date,
-           organisme = "SD OFB",
-           type_peche = "Atlas",
-           localisation = NA) %>%
+           date_peche = NA,
+           localisation = NA,
+           organisme = "Fede 56") %>%
     select(code_exutoire = IDD,
            code_station,
            localisation,
            x_wgs84, y_wgs84,
            date_peche,
            organisme,
-           type_peche,
+           type_peche = Ctxte_Pech,
            code_espece,
            effectif) %>%
     mutate_at(vars(code_station, localisation, date_peche),
               as.character)
 
   df
-
 
 }
 

@@ -4,14 +4,14 @@
 \alias{clean_wama}
 \title{Mise d'un df wama brut au format passerelle}
 \usage{
-clean_wama(wama_brut, crs_init = 2154, crs_fin = 4326)
+clean_wama(df_brut, crs_init = 2154, crs_fin = 4326)
 }
 \arguments{
-\item{wama_brut}{Dataframe wama}
+\item{df_brut}{Dataframe wama.}
 
-\item{crs_init}{Numérique. Code EPSG du CRS initial}
+\item{crs_init}{Numérique. Code EPSG du CRS initial. Par défaut c'est 2154 (Lambert 93).}
 
-\item{crs_fin}{Numérique. Code EPSG du CRS de sortie}
+\item{crs_fin}{Numérique. Code EPSG du CRS de sortie. Par défaut c'est 4326 (WGS84).}
 }
 \value{
 Un dataframe au format souhaité avec les coordonnées reprojetées

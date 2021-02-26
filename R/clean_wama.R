@@ -1,8 +1,8 @@
 #' Mise d'un df wama brut au format passerelle
 #'
-#' @param wama_brut Dataframe wama
-#' @param crs_init Numérique. Code EPSG du CRS initial
-#' @param crs_fin Numérique. Code EPSG du CRS de sortie
+#' @param df_brut Dataframe wama.
+#' @param crs_init Numérique. Code EPSG du CRS initial. Par défaut c'est 2154 (Lambert 93).
+#' @param crs_fin Numérique. Code EPSG du CRS de sortie. Par défaut c'est 4326 (WGS84).
 #'
 #' @return Un dataframe au format souhaité avec les coordonnées reprojetées
 #' @export
@@ -17,15 +17,15 @@
 #' wama_propre <- wama_brut %>%
 #' clean_wama()
 #' }
-clean_wama <- function(wama_brut, crs_init = 2154, crs_fin = 4326)
+clean_wama <- function(df_brut, crs_init = 2154, crs_fin = 4326)
 
   {
 
-  coords <- get_coords(sf_obj = wama_brut,
+  coords <- get_coords(sf_obj = df_brut,
                        crs_init = crs_init,
                        crs_fin = crs_fin)
 
-  wama <- wama_brut %>%
+  df <- df_brut %>%
     bind_cols(coords) %>% # ajout des coordonnées en wgs84
     st_drop_geometry() %>% # suppression de la colonnes géométrie
     dplyr::filter(!stringr::str_detect(CD_STAT, pattern = "Total")) %>% # suppression du total
@@ -49,7 +49,7 @@ clean_wama <- function(wama_brut, crs_init = 2154, crs_fin = 4326)
     mutate_at(vars(code_station, localisation, date_peche),
               as.character)
 
-  wama
+  df
 
 
 }
