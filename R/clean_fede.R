@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' sd_fede_propre <- sd_fede_brut %>%
+#' fede_propre <- fede_brut %>%
 #' clean_fede()
 #' }
 clean_fede <- function(df_brut, crs_init = 2154, crs_fin = 4326)

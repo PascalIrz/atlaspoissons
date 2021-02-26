@@ -21,7 +21,7 @@ Mise d'un df brut des pêches fédés au format passerelle
 }
 \examples{
 \dontrun{
-sd_fede_propre <- sd_fede_brut \%>\%
+fede_propre <- fede_brut \%>\%
 clean_fede()
 }
 }
