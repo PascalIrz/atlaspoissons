@@ -2,22 +2,23 @@
 % Please edit documentation in R/clean_aspe.R
 \name{clean_aspe}
 \alias{clean_aspe}
-\title{Mise d'un df brut aspe au format passerelle}
+\title{Mise en forme d'un df aspe au format commun avec wama, fédés, etc.}
 \usage{
-clean_aspe(df)
+clean_aspe(passerelle)
 }
 \arguments{
-\item{df}{Dataframe contenant les données.}
+\item{passerelle}{Dataframe passerelle.}
 }
 \value{
-Un dataframe au format souhaité avec les coordonnées reprojetées
+Un dataframe au format souhaité avec les coordonnées reprojetées.
 }
 \description{
-Mise d'un df brut aspe au format passerelle
+Mise en forme d'un df aspe au format commun avec wama, fédés, etc.
 }
 \examples{
 \dontrun{
-aspe_propre <- aspe_brut \%>\%
+aspe <- passerelle \%>\%
 clean_aspe()
 }
+
 }
