@@ -14,7 +14,7 @@ clean_wama(df_brut, crs_init = 2154, crs_fin = 4326)
 \item{crs_fin}{Numérique. Code EPSG du CRS de sortie. Par défaut c'est 4326 (WGS84).}
 }
 \value{
-Un dataframe au format souhaité avec les coordonnées reprojetées
+Un dataframe au format souhaité avec les coordonnées reprojetées.
 }
 \description{
 Mise d'un df wama brut au format passerelle

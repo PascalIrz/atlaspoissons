@@ -4,7 +4,7 @@
 #' @param crs_init Numérique. Code EPSG du CRS initial. Par défaut c'est 2154 (Lambert 93).
 #' @param crs_fin Numérique. Code EPSG du CRS de sortie. Par défaut c'est 4326 (WGS84).
 #'
-#' @return Un dataframe au format souhaité avec les coordonnées reprojetées
+#' @return Un dataframe au format souhaité avec les coordonnées reprojetées.
 #' @export
 #'
 #' @importFrom dplyr bind_cols filter mutate select mutate_at vars
@@ -17,9 +17,11 @@
 #' wama_propre <- wama_brut %>%
 #' clean_wama()
 #' }
-clean_wama <- function(df_brut, crs_init = 2154, crs_fin = 4326)
+clean_wama <- function(df_brut,
+                       crs_init = 2154,
+                       crs_fin = 4326)
 
-  {
+{
 
   coords <- get_coords(sf_obj = df_brut,
                        crs_init = crs_init,
@@ -32,26 +34,29 @@ clean_wama <- function(df_brut, crs_init = 2154, crs_fin = 4326)
     pivot_longer(cols = ABH:VAX,
                  names_to = "code_espece",
                  values_to = "effectif") %>%
-    mutate(date_peche = stringr::str_sub(CD_STAT, -4, -1),
-           code_station = stringr::str_sub(CD_STAT, 1, -6),
-           organisme = "WAMA",
-           type_peche = "WAMA",
-           localisation = NA) %>%
-    select(code_exutoire = IDD,
-           code_station,
-           localisation,
-           x_wgs84 = X,
-           y_wgs84 = Y,
-           date_peche,
-           organisme,
-           type_peche,
-           code_espece,
-           effectif) %>%
+    mutate(
+      date_peche = stringr::str_sub(CD_STAT,-4,-1),
+      code_station = stringr::str_sub(CD_STAT, 1,-6),
+      organisme = "WAMA",
+      type_peche = "WAMA",
+      localisation = NA
+    ) %>%
+    select(
+      code_exutoire = IDD,
+      code_station,
+      localisation,
+      x_wgs84 = X,
+      y_wgs84 = Y,
+      date_peche,
+      organisme,
+      type_peche,
+      code_espece,
+      effectif
+    ) %>%
     mutate_at(vars(code_station, localisation, date_peche),
               as.character)
 
   df
-
 
 }
 
