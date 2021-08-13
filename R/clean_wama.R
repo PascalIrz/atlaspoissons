@@ -1,4 +1,4 @@
-#' Mise d'un df wama brut au format passerelle
+#' Mise en forme d'un df aspe au format d'échange commun avec aspe, fédés, etc.
 #'
 #' @param df_brut Dataframe wama.
 #' @param crs_init Numérique. Code EPSG du CRS initial. Par défaut c'est 2154 (Lambert 93).

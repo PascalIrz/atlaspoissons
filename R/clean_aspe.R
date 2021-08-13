@@ -1,4 +1,4 @@
-#' Mise en forme d'un df aspe au format commun avec wama, fédés, etc.
+#' Mise en forme d'un df aspe au format d'échange commun avec wama, fédés, etc.
 #'
 #' @param passerelle Dataframe passerelle.
 #'
@@ -68,9 +68,10 @@ clean_aspe <- function(passerelle)
       effectif = lop_effectif
     )
 
-  # Passage en présence - absence
+  # Passage en présence - absence + gestion types de variables
   aspe <- aspe %>%
-    mutate(effectif = ifelse(effectif > 0, 1, 0))
+    mutate(effectif = ifelse(effectif > 0, 1, 0)) %>%
+    mutate_at(vars(code_station, localisation, date_peche), as.character)
 
   aspe
 

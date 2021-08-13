@@ -2,7 +2,7 @@
 % Please edit documentation in R/clean_wama.R
 \name{clean_wama}
 \alias{clean_wama}
-\title{Mise d'un df wama brut au format passerelle}
+\title{Mise en forme d'un df aspe au format d'échange commun avec aspe, fédés, etc.}
 \usage{
 clean_wama(df_brut, crs_init = 2154, crs_fin = 4326)
 }
@@ -17,7 +17,7 @@ clean_wama(df_brut, crs_init = 2154, crs_fin = 4326)
 Un dataframe au format souhaité avec les coordonnées reprojetées.
 }
 \description{
-Mise d'un df wama brut au format passerelle
+Mise en forme d'un df aspe au format d'échange commun avec aspe, fédés, etc.
 }
 \examples{
 \dontrun{
