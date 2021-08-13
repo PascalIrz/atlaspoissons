@@ -34,6 +34,7 @@ clean_fede <- function(df_brut,
     mutate(
       code_station = NA,
       date_peche = NA,
+      annee = NA,
       localisation = NA,
       organisme = "Fede 56"
     ) %>%
@@ -44,6 +45,7 @@ clean_fede <- function(df_brut,
       x_wgs84,
       y_wgs84,
       date_peche,
+      annee,
       organisme,
       type_peche = Ctxte_Pech,
       code_espece,

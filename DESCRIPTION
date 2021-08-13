@@ -12,6 +12,7 @@ LazyData: true
 RoxygenNote: 7.1.1
 Imports: aspe,
     dplyr,
+    lubridate,
     magrittr,
     sf,
     stringr,

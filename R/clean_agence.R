@@ -8,7 +8,9 @@
 #' @importFrom dplyr mutate select mutate_at group_by summarise ungroup left_join
 #' @importFrom sf st_as_sf st_transform st_coordinates st_drop_geometry
 #' @importFrom magrittr set_colnames
-#' @importFrom tidyr pivot_longer
+#' @importFrom tidyr pivot_longer replace_na
+#' @importFrom lubridate year
+#'
 #'
 #' @examples
 #' \dontrun{
@@ -30,7 +32,9 @@ clean_agence <- function(df_brut)
       type_peche = L1_Li_Nom,
       ABH:VAR
     ) %>%
-    mutate(date_peche = as.character(date_peche)) %>%
+    mutate(date_peche = year(date_peche),
+           date_peche = as.character(date_peche),
+           annee = as.integer(date_peche)) %>%
     mutate_at(vars(ABH:VAR), replace_na, 0L) %>%
     pivot_longer(cols = ABH:VAR,
                  names_to = "code_espece",
@@ -65,6 +69,7 @@ clean_agence <- function(df_brut)
       x_wgs84,
       y_wgs84,
       date_peche,
+      annee,
       organisme,
       type_peche,
       code_espece,

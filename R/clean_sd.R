@@ -10,6 +10,7 @@
 #' @importFrom dplyr bind_cols mutate select mutate_at vars
 #' @importFrom sf st_drop_geometry
 #' @importFrom tidyr pivot_longer
+#' @importFrom stringr str_sub
 #'
 #' @examples
 #' \dontrun{
@@ -33,12 +34,15 @@ clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
     mutate(code_station = NA,
            date_peche = Date,
            organisme = "SD OFB",
-           type_peche = "Atlas") %>%
+           type_peche = "Atlas",
+           annee = str_sub(date_peche, 1, 4),
+           annee = as.integer(annee)) %>%
     select(code_exutoire = IDD,
            code_station,
            localisation = Bassin,
            x_wgs84, y_wgs84,
            date_peche,
+           annee,
            organisme,
            type_peche,
            code_espece,
