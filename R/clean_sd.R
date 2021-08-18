@@ -32,7 +32,7 @@ clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
                  names_to = "code_espece",
                  values_to = "effectif") %>%
     mutate(code_station = NA,
-           date_peche = Date,
+           date_peche = Date_peche,
            organisme = "SD OFB",
            type_peche = "Atlas",
            annee = str_sub(date_peche, 1, 4),
@@ -40,7 +40,8 @@ clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
     select(code_exutoire = IDD,
            code_station,
            localisation = Bassin,
-           x_wgs84, y_wgs84,
+           x_wgs84,
+           y_wgs84,
            date_peche,
            annee,
            organisme,
