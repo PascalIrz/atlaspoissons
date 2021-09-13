@@ -33,7 +33,7 @@ clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
                  values_to = "effectif") %>%
     mutate(code_station = NA,
            date_peche = Date_peche,
-           organisme = "SD OFB",
+           source_donnee = "SD OFB",
            type_peche = "Atlas",
            annee = str_sub(date_peche, 1, 4),
            annee = as.integer(annee)) %>%
@@ -44,7 +44,7 @@ clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
            y_wgs84,
            date_peche,
            annee,
-           organisme,
+           source_donnee,
            type_peche,
            code_espece,
            effectif) %>%
@@ -52,7 +52,6 @@ clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
               as.character)
 
   df
-
 
 }
 

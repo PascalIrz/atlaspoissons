@@ -7,7 +7,7 @@
 #'
 #' @importFrom dplyr select group_by_at slice rename summarise ungroup left_join pull
 #' @importFrom aspe mef_ajouter_ope_date mef_ajouter_libelle mef_ajouter_lots mef_ajouter_esp_code_alternatif
-#' @importFrom aspe mef_ajouter_type_protocole mef_ajouter_operateur geo_convertir_coords_df geo_ajouter_crs
+#' @importFrom aspe mef_ajouter_type_protocole geo_convertir_coords_df geo_ajouter_crs
 #'
 #' @examples
 #' \dontrun{
@@ -25,7 +25,7 @@ clean_aspe <- function(passerelle)
     mef_ajouter_lots() %>%
     mef_ajouter_esp_code_alternatif() %>%
     mef_ajouter_type_protocole() %>%
-    mef_ajouter_operateur() %>%
+  #  mef_ajouter_operateur() %>%
     mutate(code_exutoire = NA)
 
   # Liste des identifiants des points et collecte de leurs coordonnées
@@ -55,6 +55,7 @@ clean_aspe <- function(passerelle)
   # Ajout des coordonnées converties à la passerelle et renommage
   aspe <- passerelle %>%
     left_join(coords) %>%
+    mutate(source_donnee = "Aspe") %>%
     select(
       code_exutoire,
       code_station = sta_id,
@@ -62,7 +63,7 @@ clean_aspe <- function(passerelle)
       x_wgs84,
       y_wgs84,
       date_peche = ope_date,
-      organisme = utilisateur,
+      source_donnee,
       type_peche = pro_libelle,
       code_espece = esp_code_alternatif,
       effectif = lop_effectif

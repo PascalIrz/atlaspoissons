@@ -28,7 +28,7 @@ clean_agence <- function(df_brut)
       code_station = CdStationMesureEauxSurface,
       localisation = NomEntiteHydrographique,
       date_peche = Op_Dtd,
-      organisme,
+      source_donnee = organisme,
       type_peche = L1_Li_Nom,
       ABH:VAR
     ) %>%
@@ -70,7 +70,7 @@ clean_agence <- function(df_brut)
       y_wgs84,
       date_peche,
       annee,
-      organisme,
+      source_donnee,
       type_peche,
       code_espece,
       effectif

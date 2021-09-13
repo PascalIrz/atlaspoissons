@@ -36,7 +36,7 @@ clean_fede <- function(df_brut,
       date_peche = NA,
       annee = NA,
       localisation = NA,
-      organisme = "Fede 56"
+      source_donnee = "Fede 56"
     ) %>%
     select(
       code_exutoire = IDD,
@@ -46,7 +46,7 @@ clean_fede <- function(df_brut,
       y_wgs84,
       date_peche,
       annee,
-      organisme,
+      source_donnee,
       type_peche = Ctxte_Pech,
       code_espece,
       effectif

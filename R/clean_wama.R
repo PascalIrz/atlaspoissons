@@ -38,7 +38,7 @@ clean_wama <- function(df_brut,
       date_peche = stringr::str_sub(CD_STAT,-4,-1),
       annee = as.integer(date_peche),
       code_station = stringr::str_sub(CD_STAT, 1,-6),
-      organisme = "WAMA",
+      source_donnee = "WAMA",
       type_peche = "WAMA",
       localisation = NA
     ) %>%
@@ -50,7 +50,7 @@ clean_wama <- function(df_brut,
       y_wgs84 = Y,
       date_peche,
       annee,
-      organisme,
+      source_donnee,
       type_peche,
       code_espece,
       effectif
