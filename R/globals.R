@@ -7,4 +7,5 @@ utils::globalVariables(c('ABH', 'CD_STAT',  'IDD', 'VAX', 'X',  'Y',
                          'Bassin', 'code_exutoire', 'esp_code_alternatif', 'point_prelevement', 'pop_id',
                          'pop_libelle', 'pro_libelle', 'sta_id', 'typ_code_epsg', 'utilisateur', 'x_l93', 'y_l93',
                          'CdStationMesureEauxSurface', 'CoordXPointEauxSurf', 'CoordYPointEauxSurf',
-                         'L1_Li_Nom', 'NomEntiteHydrographique', 'Op_Dtd', 'VAR', 'annee'))
+                         'L1_Li_Nom', 'NomEntiteHydrographique', 'Op_Dtd', 'VAR', 'annee',
+                         'Date_peche', 'source_donnee'))

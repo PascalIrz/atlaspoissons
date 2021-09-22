@@ -48,7 +48,7 @@ clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
            type_peche,
            code_espece,
            effectif) %>%
-    mutate_at(vars(code_station, localisation, date_peche),
+    mutate_at(vars(code_station, localisation),
               as.character)
 
   df

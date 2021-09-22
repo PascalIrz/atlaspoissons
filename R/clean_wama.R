@@ -35,8 +35,8 @@ clean_wama <- function(df_brut,
                  names_to = "code_espece",
                  values_to = "effectif") %>%
     mutate(
-      date_peche = stringr::str_sub(CD_STAT,-4,-1),
-      annee = as.integer(date_peche),
+      date_peche = NA,
+      annee = as.integer(stringr::str_sub(CD_STAT,-4,-1)),
       code_station = stringr::str_sub(CD_STAT, 1,-6),
       source_donnee = "WAMA",
       type_peche = "WAMA",
