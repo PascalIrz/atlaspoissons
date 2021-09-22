@@ -8,6 +8,7 @@
 #' @importFrom dplyr select group_by_at slice rename summarise ungroup left_join pull
 #' @importFrom aspe mef_ajouter_ope_date mef_ajouter_libelle mef_ajouter_lots mef_ajouter_esp_code_alternatif
 #' @importFrom aspe mef_ajouter_type_protocole geo_convertir_coords_df geo_ajouter_crs
+#' @importFrom lubridate year
 #'
 #' @examples
 #' \dontrun{
@@ -55,14 +56,17 @@ clean_aspe <- function(passerelle)
   # Ajout des coordonnées converties à la passerelle et renommage
   aspe <- passerelle %>%
     left_join(coords) %>%
-    mutate(source_donnee = "Aspe") %>%
+    mutate(source_donnee = "Aspe",
+           date_peche = as.Date(ope_date),
+           annee = year(date_peche)) %>%
     select(
       code_exutoire,
       code_station = sta_id,
       localisation = pop_libelle,
       x_wgs84,
       y_wgs84,
-      date_peche = ope_date,
+      date_peche,
+      annee,
       source_donnee,
       type_peche = pro_libelle,
       code_espece = esp_code_alternatif,

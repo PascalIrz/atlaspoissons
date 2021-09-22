@@ -33,9 +33,9 @@ clean_agence <- function(df_brut)
       ABH:VAR
     ) %>%
     mutate(annee = year(date_peche),
-           annee = as.character(annee),
-           annee = as.integer(annee),
-           date_peche = as.Date(date_peche)) %>%
+         #  annee = as.character(annee),
+        #   annee = as.integer(annee),
+           date_peche = as.character(date_peche)) %>%
     mutate_at(vars(ABH:VAR), replace_na, 0L) %>%
     pivot_longer(cols = ABH:VAR,
                  names_to = "code_espece",
