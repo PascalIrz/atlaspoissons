@@ -1,4 +1,4 @@
-Package: atlas
+Package: atlaspoissons
 Type: Package
 Title: Pour produire l'atlas des poissons d'eau douce de Bretagne
 Version: 0.1.0.9001
@@ -9,7 +9,7 @@ Description: Homogénéiser les données d'inventaire piscicole, présenter les 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: aspe,
     dplyr,
     lubridate,
