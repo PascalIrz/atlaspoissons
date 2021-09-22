@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Les coordonnees de la DR
+#' # Les coordonnees de la DR OFB Bretagne
 #' x <- 304660
 #' y <- 2353600
 #'
