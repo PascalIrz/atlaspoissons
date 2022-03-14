@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @importFrom dplyr select group_by_at slice rename summarise ungroup left_join pull
-#' @importFrom aspe mef_ajouter_ope_date mef_ajouter_libelle mef_ajouter_lots mef_ajouter_esp_code_alternatif
+#' @importFrom aspe mef_ajouter_ope_date mef_ajouter_libelle mef_ajouter_lots
 #' @importFrom aspe mef_ajouter_type_protocole geo_convertir_coords_df geo_ajouter_crs
 #' @importFrom lubridate year
 #'
@@ -24,7 +24,7 @@ clean_aspe <- function(passerelle)
     mef_ajouter_ope_date() %>%
     mef_ajouter_libelle() %>%
     mef_ajouter_lots() %>%
-    mef_ajouter_esp_code_alternatif() %>%
+    # mef_ajouter_esp_code_alternatif() %>%
     mef_ajouter_type_protocole() %>%
   #  mef_ajouter_operateur() %>%
     mutate(code_exutoire = NA)
