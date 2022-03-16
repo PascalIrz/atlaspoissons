@@ -10,6 +10,7 @@
 #' @importFrom dplyr bind_cols mutate select mutate_at vars
 #' @importFrom sf st_drop_geometry
 #' @importFrom tidyr pivot_longer
+#' @importFrom stringr str_to_upper
 #'
 #' @examples
 #' \dontrun{
@@ -36,7 +37,7 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
       annee = str_sub(date_peche, 1, 4),
       annee = as.integer(annee),
       source_donnee = "Fede 35",
-      code_espece = Espèce,
+      code_espece = `Espèce`,
       effectif = str_to_upper(`Nb Individus`),
       type_peche = Type,
       localisation = `Cours d'eau`,
@@ -64,4 +65,4 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
 
 }
 
-clean_fede35(fede35)
+#clean_fede35(fede35)

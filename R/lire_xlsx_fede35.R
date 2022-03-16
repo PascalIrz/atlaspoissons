@@ -11,7 +11,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom purrr map reduce
 #' @importFrom readxl read_xlsx
-#' @importFrom stringr str_detects
+#' @importFrom stringr str_detect
 #'
 #' @examples
 #' \dontrun{
@@ -23,8 +23,8 @@
 lire_xlsx_fede35 <- function(repertoire, fichier_reference = "CR op pêche elec FD35 2020-VF.xlsx") {
 
   #Lecture d'un seul fichier excel qui range les variables dans l'ordre choisi
-  lire_un_fichier <- function(fichier,ordre_var) {
-    data <- readxl::read_xlsx(fichier)
+  lire_un_fichier <- function(fichier, ordre_var) {
+    data <- read_xlsx(fichier)
 
     #!str_detect pour mettre la négation
     if(!str_detect("Code station", names(data)))
@@ -44,7 +44,7 @@ lire_xlsx_fede35 <- function(repertoire, fichier_reference = "CR op pêche elec 
                           pattern = "CR op pêche elec FD35",
                           full.names = TRUE)
 
-  variables <- readxl::read_xlsx(paste0(repertoire, "/", fichier_reference)) %>%
+  variables <- read_xlsx(paste0(repertoire, "/", fichier_reference)) %>%
     names() %>%
   .[-1]
 
@@ -71,8 +71,8 @@ lire_xlsx_fede35 <- function(repertoire, fichier_reference = "CR op pêche elec 
 
 }
 
-data <- lire_xlsx_fede35(repertoire="raw_data")
-
-xlsx_files <- list.files(path = repertoire,
-                         pattern = "CR op pêche elec FD35",
-                         full.names = TRUE)
+# data <- lire_xlsx_fede35(repertoire="raw_data")
+#
+# xlsx_files <- list.files(path = repertoire,
+#                          pattern = "CR op pêche elec FD35",
+#                          full.names = TRUE)
