@@ -70,12 +70,3 @@ lire_xlsx_fede35 <- function(repertoire, fichier_reference = "CR op pêche elec 
   return(FD35)
 
 }
-<<<<<<< HEAD
-=======
-
-# data <- lire_xlsx_fede35(repertoire="raw_data")
-#
-# xlsx_files <- list.files(path = repertoire,
-#                          pattern = "CR op pêche elec FD35",
-#                          full.names = TRUE)
->>>>>>> 32779907aee4efb35c042cc06e94e4cea659a1f2

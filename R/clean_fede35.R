@@ -64,8 +64,3 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
   df
 
 }
-<<<<<<< HEAD
-=======
-
-#clean_fede35(fede35)
->>>>>>> 32779907aee4efb35c042cc06e94e4cea659a1f2
