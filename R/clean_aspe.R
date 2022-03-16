@@ -26,7 +26,7 @@ clean_aspe <- function(passerelle)
     mef_ajouter_lots() %>%
     # mef_ajouter_esp_code_alternatif() %>%
     mef_ajouter_type_protocole() %>%
-  #  mef_ajouter_operateur() %>%
+    #  mef_ajouter_operateur() %>%
     mutate(code_exutoire = NA)
 
   # Liste des identifiants des points et collecte de leurs coordonnées
@@ -45,12 +45,14 @@ clean_aspe <- function(passerelle)
   # Conversion en WGS84
   coords <- geo_convertir_coords_df(
     df = pops,
-    var_x = "pop_coordonnees_x",
-    var_y = "pop_coordonnees_y",
-    var_crs_initial = "typ_code_epsg",
+    var_x = pop_coordonnees_x,
+    var_y = pop_coordonnees_y,
+    var_crs_initial = typ_code_epsg,
     crs_sortie = 4326
   ) %>%
-    rename(x_wgs84 = X,
+    cbind(pops %>% pull(pop_id)) %>%
+    rename(pop_id = `pops %>% pull(pop_id)`,
+           x_wgs84 = X,
            y_wgs84 = Y)
 
   # Ajout des coordonnées converties à la passerelle et renommage
@@ -72,8 +74,8 @@ clean_aspe <- function(passerelle)
       code_espece = esp_code_alternatif,
       effectif = lop_effectif
     )
-
-  # Passage en présence - absence + gestion types de variables
+  #
+  # # Passage en présence - absence + gestion types de variables
   aspe <- aspe %>%
     mutate(effectif = ifelse(effectif > 0, 1, 0)) %>%
     mutate_at(vars(code_station, localisation, date_peche), as.character)
