@@ -63,5 +63,3 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
   df
 
 }
-
-clean_fede35(fede35)

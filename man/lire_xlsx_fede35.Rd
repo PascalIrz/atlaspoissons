@@ -4,7 +4,10 @@
 \alias{lire_xlsx_fede35}
 \title{Assemblage des fichiers annuels}
 \usage{
-lire_xlsx_fede35(repertoire, fichier_reference)
+lire_xlsx_fede35(
+  repertoire,
+  fichier_reference = "CR op pêche elec FD35 2020-VF.xlsx"
+)
 }
 \arguments{
 \item{fichier_reference}{Caractère. Chemin vers le fichier excel dont les noms de colonnes vont servir
@@ -14,14 +17,13 @@ de référence pour homogénéiser les noms des colonnes des différents fichier
 Dataframe national pour l'ensemble des années de données disponibles
 }
 \description{
-Cette fonction permet d'assembler - en les empilant - les fichiers csv issus de la fonction
-    telecharger_fichiers_onde_annuels() en un unique dataframe. La sortie est le dataframe national
-    pour l'ensemble des années où la donnée est disponible.
+Cette fonction permet d'assembler - en les empilant - les fichiers xlsx en homogénéisant
+    les noms des colonnes en un unique dataframe.
 }
 \examples{
 \dontrun{
-onde <- assembler_fichiers_onde_annuels_csv(
-annual_onde_files_dir = "raw_data/fichiers_onde_annuels_zippes"
+data <- lire_xlsx_fede35(repertoire="raw_data",
+fichier_reference = "CR op pêche elec FD35 2020-VF.xlsx")
 )
 }
 

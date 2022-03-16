@@ -11,7 +11,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom purrr map reduce
 #' @importFrom readxl read_xlsx
-#' @importFrom stringr str_detects
+#' @importFrom stringr str_detect
 #'
 #' @examples
 #' \dontrun{
@@ -70,9 +70,3 @@ lire_xlsx_fede35 <- function(repertoire, fichier_reference = "CR op pêche elec 
   return(FD35)
 
 }
-
-data <- lire_xlsx_fede35(repertoire="raw_data")
-
-xlsx_files <- list.files(path = repertoire,
-                         pattern = "CR op pêche elec FD35",
-                         full.names = TRUE)
