@@ -8,5 +8,5 @@ utils::globalVariables(c("ABH", "CD_STAT",  "IDD", "VAX", "X",  "Y",
                          "pop_libelle", "pro_libelle", "sta_id", "typ_code_epsg", "utilisateur", "x_l93", "y_l93",
                          "CdStationMesureEauxSurface", "CoordXPointEauxSurf", "CoordYPointEauxSurf",
                          "L1_Li_Nom", "NomEntiteHydrographique", "Op_Dtd", "VAR", "annee",
-                         "Date_peche", "source_donnee",
+                         "Date_peche", "source_donnee", "pops %>% pull(pop_id)", "Dep", "Lieu dit", "Commune",
                          ".", "Cours d'eau", "Espèce", "Type", "Nb Individus"))

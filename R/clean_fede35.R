@@ -20,20 +20,14 @@
 
 clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
 
-  # coords <- get_coords(sf_obj = df_brut,
-  #                      crs_init = crs_init,
-  #                      crs_fin = crs_fin)
   df <- df_brut %>%
-    # st_drop_geometry() %>%
-    # bind_cols(coords) %>%
-    # pivot_longer(cols = ABH:VAX,
-    #              names_to = "code_espece",
-    #              values_to = "effectif") %>%
-
     mutate(
       code_exutoire = NA,
       code_station = NA,
       date_peche = Date,
+      date_peche = ifelse(is.na(date_peche),
+                                min(date_peche, na.rm = TRUE),
+                                date_peche),
       annee = str_sub(date_peche, 1, 4),
       annee = as.integer(annee),
       source_donnee = "Fede 35",

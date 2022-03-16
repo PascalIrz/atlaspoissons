@@ -10,11 +10,13 @@ lire_xlsx_fede35(
 )
 }
 \arguments{
-\item{fichier_reference}{Caractère. Chemin vers le fichier excel dont les noms de colonnes vont servir
+\item{repertoire}{Caractère. Chemin vers le répertoire où se trouvent les fichiers Excel de données.}
+
+\item{fichier_reference}{Caractère. Nom du fichier excel dont les noms de colonnes vont servir
 de référence pour homogénéiser les noms des colonnes des différents fichiers excel}
 }
 \value{
-Dataframe national pour l'ensemble des années de données disponibles
+Dataframe pour l'ensemble des années de données disponibles par la fédé 35.
 }
 \description{
 Cette fonction permet d'assembler - en les empilant - les fichiers xlsx en homogénéisant
