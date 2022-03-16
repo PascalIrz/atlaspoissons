@@ -10,6 +10,7 @@
 #' @importFrom dplyr bind_cols mutate select mutate_at vars
 #' @importFrom sf st_drop_geometry
 #' @importFrom tidyr pivot_longer
+#' @importFrom stringr str_to_upper
 #'
 #' @examples
 #' \dontrun{
@@ -67,3 +68,4 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
 =======
 
 #clean_fede35(fede35)
+>>>>>>> 32779907aee4efb35c042cc06e94e4cea659a1f2
