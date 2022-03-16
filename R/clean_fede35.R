@@ -36,7 +36,7 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
       annee = str_sub(date_peche, 1, 4),
       annee = as.integer(annee),
       source_donnee = "Fede 35",
-      code_espece = Espèce,
+      code_espece = `Espèce`,
       effectif = str_to_upper(`Nb Individus`),
       type_peche = Type,
       localisation = `Cours d'eau`,
@@ -63,3 +63,7 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
   df
 
 }
+<<<<<<< HEAD
+=======
+
+#clean_fede35(fede35)
