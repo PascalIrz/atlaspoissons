@@ -7,7 +7,7 @@
 #' @return Un dataframe au format souhaité avec les coordonnées reprojetées
 #' @export
 #'
-#' @importFrom dplyr bind_cols mutate select mutate_at vars
+#' @importFrom dplyr bind_cols mutate select mutate_at vars if_else
 #' @importFrom sf st_drop_geometry
 #' @importFrom tidyr pivot_longer
 #' @importFrom stringr str_to_upper
@@ -25,9 +25,9 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
       code_exutoire = NA,
       code_station = NA,
       date_peche = Date,
-      date_peche = ifelse(is.na(date_peche),
-                                min(date_peche, na.rm = TRUE),
-                                date_peche),
+      date_peche = if_else(is.na(date_peche),
+                                 min(date_peche, na.rm = TRUE),
+                                 date_peche),
       annee = str_sub(date_peche, 1, 4),
       annee = as.integer(annee),
       source_donnee = "Fede 35",
