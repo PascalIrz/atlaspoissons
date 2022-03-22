@@ -34,16 +34,14 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
       code_espece = str_to_upper(`Espèce`),
       effectif = `Nb Individus`,
       type_peche = Type,
-      localisation = `Cours d'eau`,
-      x_wgs84 = X,
-      y_wgs84 = Y) %>%
+      localisation = `Cours d'eau`) %>%
 
     select(
       code_exutoire,
       code_station,
       localisation,
-      x_wgs84,
-      y_wgs84,
+      X,
+      Y,
       date_peche,
       annee,
       source_donnee,
@@ -51,9 +49,15 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
       code_espece,
       effectif
     ) %>%
-
     mutate_at(vars(code_station, localisation, date_peche),
               as.character)
+
+  coords <- df %>%
+    st_as_sf(coords = c("X", "Y"),
+             crs = crs_init) %>%
+    st_transform(crs = crs_fin) %>%
+    st_coordinates() %>%
+    set_colnames(c("x_wgs84", "y_wgs84"))
 
   df
 
