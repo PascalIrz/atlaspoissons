@@ -37,20 +37,20 @@ donner_statut_sp_bv <- function (sf_data) {
       )
     ) %>%
     group_by(code_exutoire) %>%
-    summarise(inventaire = max(inventaire))
+    summarise(statut = max(statut))
 
-    # On joint les données
-    data_bv <- data %>%
-      left_join(bv)
+  # On joint les données
+  data_bv <- data %>%
+    left_join(bv)
 
-    # On termine par créer la liste des statuts
-    bv_statuts <- data_bv %>%
-      group_by(code_exutoire, code_espece) %>%
-      summarise(statut = case_when(
-        max(effectif) > 0 ~ "Présence",
-        max(effectif) == 0 & max(inventaire) == 1 ~ "Absence avérée",
-        max(effectif) == 0 & max(inventaire) == 0 ~ "Absence échantillonnage insuffisant",
-        TRUE ~ "Non prospecté"
-      ))
+  # On termine par créer la liste des statuts
+  bv_statuts <- data_bv %>%
+    group_by(code_exutoire, code_espece) %>%
+    summarise(statut = case_when(
+      max(effectif) > 0 ~ "Présence",
+      max(effectif) == 0 & max(statut) == 1 ~ "Absence avérée",
+      max(effectif) == 0 & max(statut) == 0 ~ "Absence échantillonnage insuffisant",
+      TRUE ~ "Non prospecté"
+    ))
 
 }
