@@ -33,14 +33,9 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
       code_espece = str_to_upper(`Espèce`),
       effectif = `Nb Individus`,
       type_peche = Type,
-<<<<<<< HEAD
       localisation = `Cours d'eau`,
       X = if_else(X > 1e6, X / 10, X),
       Y = if_else(Y > 7.2e6, Y / 10, Y)) %>%
-=======
-      localisation = `Cours d'eau`) %>%
->>>>>>> 1d7aa1008ec2236a3bca584e24373b083c135ff9
-
     select(
       code_exutoire,
       code_station,
@@ -62,7 +57,6 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
              crs = crs_init) %>%
     st_transform(crs = crs_fin) %>%
     st_coordinates() %>%
-<<<<<<< HEAD
     as.data.frame() %>%
     rename(x_wgs84 = X,
            y_wgs84 = Y)
@@ -73,9 +67,6 @@ clean_fede35 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
            x_wgs84,
            y_wgs84,
            date_peche:effectif)
-=======
-    set_colnames(c("x_wgs84", "y_wgs84"))
->>>>>>> 1d7aa1008ec2236a3bca584e24373b083c135ff9
 
   df
 
