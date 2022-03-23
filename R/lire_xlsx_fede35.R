@@ -77,8 +77,8 @@ lire_xlsx_fede35 <- function(repertoire, fichier_reference = "CR op pêche elec 
                      ordre_var = variables) %>%
     reduce(rbind) %>%
     group_by(`Lieu dit`) %>%
-    fill(X, Y, .direction = "downup") # remplissage des dernières valeurs manquantes
-
+    fill(X, Y, .direction = "downup") %>%  # remplissage des dernières valeurs manquantes
+    ungroup()
 
 
   return(FD35)
