@@ -35,7 +35,6 @@ donner_statut_sp_point <- function (sf_data) {
       ) %>%
     mutate(presence = ifelse(effectif > 0,
            TRUE,
-           FALSE),
-           effectif = sum(effectif))
+           FALSE))
 
 }
