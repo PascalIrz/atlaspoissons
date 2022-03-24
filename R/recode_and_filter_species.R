@@ -28,7 +28,7 @@ recode_and_filter_species <- function(df, sp_to_remove = NA) {
     filter(!code_espece %in% sp_to_remove)
   }
 
-  df %>%
+  df <- df %>%
     mutate(code_espece = str_replace(code_espece, pattern = "CCU", replacement = "CCX"),
            code_espece = str_replace(code_espece, pattern = "CMI", replacement = "CCX"),
            code_espece = str_replace(code_espece, pattern = "CCO", replacement = "CCX"),
@@ -39,4 +39,16 @@ recode_and_filter_species <- function(df, sp_to_remove = NA) {
            code_espece = str_replace(code_espece, pattern = "VAN", replacement = "VAX"),
            code_espece = str_replace(code_espece, pattern = "VAR", replacement = "VAX"),
            code_espece = ifelse(code_espece == "EPT" & x_wgs84 < (-4.1), "EPI", code_espece))
+
+  # Permet de sélectionner les codes espèces dans le fichier "passerelle_taxo"
+  # disponible dans le package aspe. On ne sélectionne que les codes "valides",
+  # c'est à dire les codes de 3 lettres.
+  code_valide <- passerelle_taxo %>%
+    filter(nchar(esp_code_alternatif) == 3) %>%
+    pull(esp_code_alternatif)
+
+  # Filtrer les espèces valides
+  df %>%
+    filter(code_espece %in% code_valide)
+
 }

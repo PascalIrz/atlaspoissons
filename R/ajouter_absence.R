@@ -14,17 +14,8 @@ ajouter_absence <- function(df) {
   # On commence par ajouter toutes les espèces pour chaque opération
   # Une opération = une pêche
 
-  # Permet de sélectionner les codes espèces dans le fichier "passerelle_taxo"
-  # disponible dans le package aspe. On ne sélectionne que les codes "valides",
-  # c'est à dire les codes de 3 lettres.
-  code_valide <- passerelle_taxo %>%
-    filter(nchar(esp_code_alternatif) == 3) %>%
-    pull(esp_code_alternatif)
-
-  # On crée un code pour chaque opération
   data <- df %>%
-    mutate(ope_id = paste0(code_station,date_peche,annee,localisation,type_peche)) %>%
-    filter(code_espece %in% code_valide)
+    mutate(ope_id = paste0(code_station,date_peche,annee,localisation,type_peche))
 
   # On récupère le code de chaque opération sous forme de vecteur
   ope_id <- data %>%
