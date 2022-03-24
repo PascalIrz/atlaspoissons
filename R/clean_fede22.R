@@ -1,15 +1,15 @@
 #' Fonction permettant de nettoyer le dataframe brut obtenu avec la fonction
 #' lire_xls_fede22() en l'homogénéisant par rapport aux autres dataframes.
 #'
-#' @param df_brut
-#' @param crs_init
-#' @param crs_fin
+#' @param df_brut Caractère. Fichier désiré à nettoyer.
+#' @param crs_init Ne pas renseigner. Crs initial du fichier, déjà renseigné.
+#' @param crs_fin Ne pas renseigner. Crs final du fichier, déjà renseigné.
 #'
 #' @return Un dataframe homogénéisé avec les autres dataframes des autres données
 #' de pêche
 #' @export
 #'
-#' @import dplyr mutate select mutate_at
+#' @importFrom dplyr mutate select mutate_at vars if_else rename
 #'
 #' @examples clean_fede22(fede22_base)
 
