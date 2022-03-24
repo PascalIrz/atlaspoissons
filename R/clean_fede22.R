@@ -25,21 +25,12 @@ clean_fede22 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
                            min(date_peche, na.rm = TRUE),
                            date_peche),
       annee = str_sub(date_peche, 1, 4),
+      annee = as.integer(annee),
       source_donnee = "Fede 22",
       code_espece = `Espèce`,
       effectif = Nb.Individus,
       type_peche = Type,
-      localisation = Cours.d.eau,
-      x_wgs = X,
-      y_wgs = Y)
-
-  # Tranforme les coordonnées L93 en WGS84
-  coords <- df %>%
-    st_as_sf(coords = c("X", "Y"),
-             crs = crs_init) %>%
-    st_transform(crs = crs_fin) %>%
-    st_coordinates() %>%
-    set_colnames(c("x_wgs84", "y_wgs84"))
+      localisation = Cours.d.eau)
 
   # Sélectionne les colonnes à garder
   df <- df %>%
@@ -47,8 +38,8 @@ clean_fede22 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
       code_exutoire,
       code_station,
       localisation,
-      x_wgs,
-      y_wgs,
+      X,
+      Y,
       date_peche,
       annee,
       source_donnee,
@@ -57,6 +48,23 @@ clean_fede22 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
       effectif) %>%
     mutate_at(vars(code_station, localisation, date_peche),
               as.character)
+
+  # Tranforme les coordonnées L93 en WGS84
+  coords <- df %>%
+    st_as_sf(coords = c("X", "Y"),
+             crs = crs_init) %>%
+    st_transform(crs = crs_fin) %>%
+    st_coordinates() %>%
+    as.data.frame() %>%
+    rename(x_wgs84 = X,
+           y_wgs84 = Y)
+
+  df <- df %>%
+    cbind(coords) %>%
+    select(code_exutoire:localisation,
+           x_wgs84,
+           y_wgs84,
+           date_peche:effectif)
 
   df
 
