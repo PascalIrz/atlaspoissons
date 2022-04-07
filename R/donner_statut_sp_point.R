@@ -21,7 +21,8 @@ donner_statut_sp_point <- function (sf_data) {
            code_espece,
            effectif,
            type_peche,
-           ope_id) %>%
+           ope_id,
+           esp_nom_commun) %>%
     distinct() %>%
    filter(
         type_peche %in% c("Pêche complète à un ou plusieurs passages",
