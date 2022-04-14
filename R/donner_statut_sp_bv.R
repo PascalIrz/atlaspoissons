@@ -20,7 +20,8 @@ donner_statut_sp_bv <- function (sf_data) {
   bv <- data %>%
     select(code_exutoire,
            type_peche,
-           code_station) %>%
+           code_station,
+           esp_nom_commun) %>%
     distinct() %>%
     mutate(
       statut = ifelse(
