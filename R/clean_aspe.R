@@ -24,9 +24,7 @@ clean_aspe <- function(passerelle)
     mef_ajouter_ope_date() %>%
     mef_ajouter_libelle() %>%
     mef_ajouter_lots() %>%
-    # mef_ajouter_esp_code_alternatif() %>%
     mef_ajouter_type_protocole() %>%
-    #  mef_ajouter_operateur() %>%
     mutate(code_exutoire = NA)
 
   # Liste des identifiants des points et collecte de leurs coordonnées
@@ -74,7 +72,6 @@ clean_aspe <- function(passerelle)
       code_espece = esp_code_alternatif,
       effectif = lop_effectif
     )
-  #
   # # Passage en présence - absence + gestion types de variables
   aspe <- aspe %>%
     # mutate(effectif = ifelse(effectif > 0, 1, 0)) %>%
