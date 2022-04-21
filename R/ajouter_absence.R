@@ -1,8 +1,10 @@
 #' Fonction permettant d'ajouter les absence des espèces pour chaque opération
 #'
-#' @param df fichier de donnees
+#' @param df fichier de donnees qui doit contenir une variable "code_espece" mais pas les
+#'    noms latin ou commun, ainsi que la variable "effectif".
 #'
-#' @return Une correction du dataframe data
+#' @return Le dataframe df complété avec les combinaisons manquantes entre les codes espèces et
+#'     les autres variables.
 #' @export
 #'
 #' @importFrom dplyr mutate filter pull left_join
@@ -11,30 +13,15 @@
 
 ajouter_absence <- function(df) {
 
-  # On commence par ajouter toutes les espèces pour chaque opération
-  # Une opération = une pêche
+  test <- df %>%
+    pivot_wider(names_from = "code_espece",
+                values_from = "effectif",
+                values_fill = 0) %>%
+    pivot_longer(cols = -(code_exutoire:ope_id),
+                 names_to = "code_espece",
+                 values_to = "effectif") %>%
+    filter(effectif == 0)
 
-  data <- df %>%
-    mutate(ope_id = paste0(code_station,date_peche,annee,localisation,type_peche))
-
-  # On récupère le code de chaque opération sous forme de vecteur
-  ope_id <- data %>%
-    pull(ope_id) %>%
-    unique
-
-  # On récupère le code espèce sous forme de vecteur
-  code_espece <- data %>%
-    pull(code_espece) %>%
-    unique
-
-  # On crée un nouveau dataframe en joignant les deux vecteurs, on renomme les
-  # variables
-  df_ope <- expand.grid(ope_id=ope_id,code_espece=code_espece)
-
-  # On rejoint ce nouveau dataframe à l'ancien
-  # Remplacer NA par 0
-  data <- df_ope %>%
-    left_join(data) %>%
-    mutate(effectif = if_else(is.na(effectif), 0, effectif))
+  test
 
 }

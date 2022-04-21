@@ -7,10 +7,12 @@
 ajouter_absence(df)
 }
 \arguments{
-\item{df}{fichier de donnees}
+\item{df}{fichier de donnees qui doit contenir une variable "code_espece" mais pas les
+noms latin ou commun, ainsi que la variable "effectif".}
 }
 \value{
-Une correction du dataframe data
+Le dataframe df complété avec les combinaisons manquantes entre les codes espèces et
+    les autres variables.
 }
 \description{
 Fonction permettant d'ajouter les absence des espèces pour chaque opération

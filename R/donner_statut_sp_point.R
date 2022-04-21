@@ -19,6 +19,7 @@ donner_statut_sp_point <- function (sf_data) {
   point <- data %>%
     select(code_station,
            code_espece,
+           esp_nom_commun,
            effectif,
            type_peche,
            ope_id,
