@@ -36,8 +36,7 @@ recode_and_filter_species <- function(df, sp_to_remove = NA) {
            code_espece = str_replace(code_espece, pattern = "CAD", replacement = "CAX"),
            code_espece = str_replace(code_espece, pattern = "CAA", replacement = "CAX"),
            code_espece = str_replace(code_espece, pattern = "CAS", replacement = "CAX"),
-           code_espece = str_replace(code_espece, pattern = "VAN", replacement = "VAX"),
-           code_espece = str_replace(code_espece, pattern = "VAR", replacement = "VAX"),
+           code_espece = str_replace(code_espece, pattern = "VAN", replacement = "VAR"),
            code_espece = ifelse(code_espece == "EPT" & x_wgs84 < (-4.1), "EPI", code_espece))
 
   # Permet de sélectionner les codes espèces dans le fichier "passerelle_taxo"
