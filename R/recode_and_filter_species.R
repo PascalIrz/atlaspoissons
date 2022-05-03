@@ -29,13 +29,13 @@ recode_and_filter_species <- function(df, sp_to_remove = NA) {
   }
 
   df <- df %>%
-    mutate(code_espece = str_replace(code_espece, pattern = "CCU", replacement = "CCX"),
-           code_espece = str_replace(code_espece, pattern = "CMI", replacement = "CCX"),
-           code_espece = str_replace(code_espece, pattern = "CCO", replacement = "CCX"),
-           code_espece = str_replace(code_espece, pattern = "CAG", replacement = "CAX"),
-           code_espece = str_replace(code_espece, pattern = "CAD", replacement = "CAX"),
-           code_espece = str_replace(code_espece, pattern = "CAA", replacement = "CAX"),
-           code_espece = str_replace(code_espece, pattern = "CAS", replacement = "CAX"),
+    mutate(code_espece = str_replace(code_espece, pattern = "CCU", replacement = "CCO"),
+           code_espece = str_replace(code_espece, pattern = "CCX", replacement = "CCO"),
+           code_espece = str_replace(code_espece, pattern = "CMI", replacement = "CCO"),
+           code_espece = str_replace(code_espece, pattern = "CAG", replacement = "CAS"),
+           code_espece = str_replace(code_espece, pattern = "CAD", replacement = "CAS"),
+           code_espece = str_replace(code_espece, pattern = "CAA", replacement = "CAS"),
+           code_espece = str_replace(code_espece, pattern = "CAX", replacement = "CAS"),
            code_espece = str_replace(code_espece, pattern = "VAN", replacement = "VAR"),
            code_espece = ifelse(code_espece == "EPT" & x_wgs84 < (-4.1), "EPI", code_espece))
 
