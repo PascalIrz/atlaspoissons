@@ -6,7 +6,7 @@
 #' @return modification du dataframe avec modification des valeurs de la variable
 #' @export
 #'
-#' @importFrom dplyr mutate case_when
+#' @importFrom dplyr mutate case_when enquo
 #'
 #' @examples expliciter_statut_lr(df = passerelle_taxo, var = lr_nationale)
 #'
