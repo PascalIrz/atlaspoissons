@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @importFrom sf st_crs st_transform st_coordinates
-#' @importFrom magrittr set_colnames '%>%'
+#' @importFrom magrittr set_colnames %>%
 #'
 #' @examples
 #' \dontrun{
