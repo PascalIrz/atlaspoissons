@@ -9,7 +9,10 @@
 #' @importFrom dplyr select mutate distinct summarise
 #' @importFrom sf st_drop_geometry
 #'
-#' @examples statut <- donner_statut_sp_point(sf_data = data)
+#' @examples
+#' \dontrun{
+#' statut <- donner_statut_sp_point(sf_data = data)
+#' }
 
 donner_statut_sp_point <- function (sf_data) {
 

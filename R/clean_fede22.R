@@ -11,7 +11,11 @@
 #'
 #' @importFrom dplyr mutate select mutate_at vars if_else rename
 #'
-#' @examples clean_fede22(fede22_base)
+#' @examples
+#' \dontrun{
+#' fede_propre <- fede_brut %>%
+#' clean_fede22()
+#' }
 
 clean_fede22 <- function(df_brut, crs_init = 2154, crs_fin = 4326) {
 

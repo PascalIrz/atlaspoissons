@@ -18,5 +18,7 @@ Le dataframe df complété avec les combinaisons manquantes entre les codes esp�
 Fonction permettant d'ajouter les absence des espèces pour chaque opération
 }
 \examples{
-ajouter_absence(data)
+\dontrun{
+data_complete <- ajouter_absence(data)
+}
 }

@@ -17,5 +17,7 @@ les effectifs, le statut et le type de pêche
 Donner le statut des especes présence/absence dans chaque station
 }
 \examples{
+\dontrun{
 statut <- donner_statut_sp_point(sf_data = data)
+}
 }

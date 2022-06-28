@@ -8,8 +8,12 @@
 #' @export
 #'
 #' @importFrom dplyr mutate filter pull left_join
+#' @importFrom tidyr pivot_wider pivot_longer
 #'
-#' @examples ajouter_absence(data)
+#' @examples
+#' \dontrun{
+#' data_complete <- ajouter_absence(data)
+#' }
 
 ajouter_absence <- function(df) {
 

@@ -7,7 +7,12 @@
 #'
 #' @importFrom readxl read_xls
 #'
-#' @examples lire_xls_fede22("raw_data/donnees_fede22/FDPPMA 22_baseexcelpêches_scientifiques_OFB 2021.xls")
+#' @examples
+#' \dontrun{
+#' data_f22 <- lire_xls_fede22("raw_data/donnees_fede22/FDPPMA_22_peches_scientifiques_2021.xls")
+#' }
+#'
+#' @examples
 
 
 lire_xls_fede22 <- function(fichier) {

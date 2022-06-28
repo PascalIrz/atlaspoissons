@@ -18,5 +18,7 @@ Donner le statut des especes présence/absence dans chaque bassin versant, indiq
 l'absence est avérée ou est due à un échantillonnage insuffisant.
 }
 \examples{
+\dontrun{
 statut_bv <- donner_statut_sp_bv(sf_data = data)
+}
 }

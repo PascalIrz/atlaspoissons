@@ -23,5 +23,8 @@ Fonction permettant de nettoyer le dataframe brut obtenu avec la fonction
 lire_xls_fede22() en l'homogénéisant par rapport aux autres dataframes.
 }
 \examples{
-clean_fede22(fede22_base)
+\dontrun{
+fede_propre <- fede_brut \%>\%
+clean_fede22()
+}
 }
