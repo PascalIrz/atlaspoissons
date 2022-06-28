@@ -5,6 +5,8 @@
 #' Dans l'ouest Finistère, il n'y a que de l'épinoche => recodage de l'épinochette sur cette zone.
 #' Tous les carassins sont des argentés.
 #'
+#' Cette fonction requiert la "passerelle_taxo" du package {aspe}.
+#'
 #' @param df Dataframe standardisé contenant les données.
 #' @param sp_to_remove Vecteur texte contenant les codes à trois lettres des taxons à
 #'     supprimer.
@@ -13,6 +15,7 @@
 #' @export
 #'
 #' @importFrom stringr str_replace
+#' @importFrom dplyr filter mutate case_when pull
 #'
 #' @examples
 #' \dontrun{
@@ -20,32 +23,36 @@
 #' recode_and_filter_species(sp_to_remove = c("OCV", "ASA"))
 #' }
 recode_and_filter_species <- function(df, sp_to_remove = NA) {
-
-  if(!is.na(sp_to_remove))
+  if (!is.na(sp_to_remove))
 
   {
-
-  df <- df %>%
-    filter(!code_espece %in% sp_to_remove)
+    df <- df %>%
+      filter(!code_espece %in% sp_to_remove)
   }
 
   df <- df %>%
-    mutate(code_espece = str_replace(code_espece, pattern = "CCU", replacement = "CCO"),
-           code_espece = str_replace(code_espece, pattern = "CCX", replacement = "CCO"),
-           code_espece = str_replace(code_espece, pattern = "CMI", replacement = "CCO"),
-           code_espece = str_replace(code_espece, pattern = "CAS", replacement = "CAG"),
-           code_espece = str_replace(code_espece, pattern = "CAD", replacement = "CAG"),
-           code_espece = str_replace(code_espece, pattern = "CAA", replacement = "CAG"),
-           code_espece = str_replace(code_espece, pattern = "CAX", replacement = "CAG"),
-           code_espece = str_replace(code_espece, pattern = "VAN", replacement = "VAR"),
-           code_espece = ifelse(code_espece == "EPT" & x_wgs84 < (-4.1), "EPI", code_espece))
+    mutate(
+      code_espece = case_when(
+        code_espece == "CCU" ~ "CCO",
+        code_espece == "CCX" ~ "CCO",
+        code_espece == "CMI" ~ "CCO",
+        code_espece == "CAS" ~ "CAG",
+        code_espece == "CAD" ~ "CAG",
+        code_espece == "CAA" ~ "CAG",
+        code_espece == "CAX" ~ "CAG",
+        code_espece == "VAN" ~ "VAR",
+        code_espece == "EPT" & x_wgs84 < (-4.1) ~ "EPI",
+        TRUE ~ code_espece
+      )
+    )
 
   # Permet de sélectionner les codes espèces dans le fichier "passerelle_taxo"
   # disponible dans le package aspe. On ne sélectionne que les codes "valides",
   # c'est à dire les codes de 3 lettres.
   code_valide <- passerelle_taxo %>%
     filter(nchar(esp_code_alternatif) == 3) %>%
-    pull(esp_code_alternatif)
+    pull(esp_code_alternatif) %>%
+    unique()
 
   # Filtrer les espèces valides
   df %>%

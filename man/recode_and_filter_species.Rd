@@ -21,6 +21,9 @@ Idem pour les vandoises en VAX.
 Dans l'ouest Finistère, il n'y a que de l'épinoche => recodage de l'épinochette sur cette zone.
 Tous les carassins sont des argentés.
 }
+\details{
+Cette fonction requiert la "passerelle_taxo" du package {aspe}.
+}
 \examples{
 \dontrun{
 df_propre <- df_brut \%>\%
