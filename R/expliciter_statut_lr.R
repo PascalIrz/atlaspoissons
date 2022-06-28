@@ -7,10 +7,12 @@
 #' @export
 #'
 #' @importFrom dplyr mutate case_when enquo
+#' @importFrom rlang :=
 #'
 #' @examples
 #' \dontrun{
-#' expliciter_statut_lr(df = passerelle_taxo, var = lr_nationale)
+#' passerelle_taxo <- passerelle_taxo %>%
+#' expliciter_statut_lr(var = lr_nationale)
 #' }
 #'
 expliciter_statut_lr <- function(df, var) {
