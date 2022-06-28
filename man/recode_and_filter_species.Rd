@@ -18,6 +18,8 @@ Le dataframe mis à jour.
 \description{
 Par exemple les carpes cuir, miroir, etc. sont regroupées sous un unique code CCX.
 Idem pour les vandoises en VAX.
+Dans l'ouest Finistère, il n'y a que de l'épinoche => recodage de l'épinochette sur cette zone.
+Tous les carassins sont des argentés.
 }
 \examples{
 \dontrun{
