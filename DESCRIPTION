@@ -1,7 +1,7 @@
 Package: atlaspoissons
 Type: Package
 Title: Pour produire l'atlas des poissons d'eau douce de Bretagne
-Version: 0.1.4
+Version: 0.1.5
 Author: Pascal Irz <pascal.irz@ofb.gouv.fr>
 Maintainer: Pascal Irz <pascal.irz@ofb.gouv.fr>
 Description: Homogénéiser les données d'inventaire piscicole, présenter les bassins versants
@@ -16,6 +16,7 @@ Imports: aspe,
     magrittr,
     purrr,
     readxl,
+    rlang,
     sf,
     stringr,
     tidyr
