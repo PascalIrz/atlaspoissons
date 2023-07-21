@@ -4,6 +4,8 @@
 # atlaspoissons
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/PascalIrz/atlaspoissons/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PascalIrz/atlaspoissons/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of {atlaspoissons} is to gather a set of functions to produce
