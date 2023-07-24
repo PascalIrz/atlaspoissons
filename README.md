@@ -13,8 +13,7 @@ the atlas of freshwater fishes of Britanny.
 
 ## Installation
 
-You can install the development version from
-[GitHub](https://github.com/) with:
+You can install it from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")

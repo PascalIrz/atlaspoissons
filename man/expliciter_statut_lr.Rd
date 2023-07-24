@@ -19,7 +19,7 @@ Fonction permettant d'expliciter le statut liste rouge de chaque espèce
 }
 \examples{
 \dontrun{
-passerelle_taxo <- passerelle_taxo \%>\%
+data_passerelle_taxo <- data_passerelle_taxo \%>\%
 expliciter_statut_lr(var = lr_nationale)
 }
 

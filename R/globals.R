@@ -10,4 +10,6 @@ utils::globalVariables(c("ABH", "CD_STAT",  "IDD", "VAX", "X",  "Y",
                          "L1_Li_Nom", "NomEntiteHydrographique", "Op_Dtd", "VAR", "annee",
                          "Date_peche", "source_donnee", "pops %>% pull(pop_id)", "Dep", "Lieu dit", "Commune",
                          ".", "Cours d'eau", "Espèce", "Type", "Nb Individus", "Cours.d.eau", "Nb.Individus",
-                         "esp_nom_commun", "ope_id", "passerelle_taxo", "statut"))
+                         "esp_nom_commun", "ope_id", "data_passerelle_taxo", "statut",
+                         "code_station_interne_fede", "date_ope", "maitre_ouvrage nom_station_fede",
+                         "protocole taxon"))

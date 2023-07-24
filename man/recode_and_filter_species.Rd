@@ -4,7 +4,7 @@
 \alias{recode_and_filter_species}
 \title{Recodage des codes espèces et exclusion de taxons}
 \usage{
-recode_and_filter_species(df, sp_to_remove = NA)
+recode_and_filter_species(df, sp_to_remove = NULL)
 }
 \arguments{
 \item{df}{Dataframe standardisé contenant les données.}
@@ -22,7 +22,7 @@ Dans l'ouest Finistère, il n'y a que de l'épinoche => recodage de l'épinochet
 Tous les carassins sont des argentés.
 }
 \details{
-Cette fonction requiert la "passerelle_taxo" du package {aspe}.
+Cette fonction requiert le jeu de données "data_passerelle_taxo" du package {aspe}.
 }
 \examples{
 \dontrun{

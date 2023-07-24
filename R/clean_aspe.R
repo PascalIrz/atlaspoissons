@@ -75,7 +75,9 @@ clean_aspe <- function(passerelle)
   # # Passage en présence - absence + gestion types de variables
   aspe <- aspe %>%
     # mutate(effectif = ifelse(effectif > 0, 1, 0)) %>%
-    mutate_at(vars(code_station, localisation, date_peche), as.character)
+    mutate_at(vars(code_station,
+                   localisation,
+                   date_peche), as.character)
 
   aspe
 

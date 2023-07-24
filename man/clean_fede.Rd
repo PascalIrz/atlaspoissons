@@ -2,7 +2,7 @@
 % Please edit documentation in R/clean_fede.R
 \name{clean_fede}
 \alias{clean_fede}
-\title{Mise d'un df brut des pêches fédés au format passerelle}
+\title{Mise d'un df brut des pêches SD au format passerelle}
 \usage{
 clean_fede(df_brut, crs_init = 2154, crs_fin = 4326)
 }
@@ -17,11 +17,11 @@ clean_fede(df_brut, crs_init = 2154, crs_fin = 4326)
 Un dataframe au format souhaité avec les coordonnées reprojetées
 }
 \description{
-Mise d'un df brut des pêches fédés au format passerelle
+Mise d'un df brut des pêches SD au format passerelle
 }
 \examples{
 \dontrun{
-fede_propre <- fede_brut \%>\%
-clean_fede()
+sd_data_propre <- sd_data_brut \%>\%
+clean_sd()
 }
 }

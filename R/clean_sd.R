@@ -19,7 +19,7 @@
 #' }
 clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
 
-  {
+{
 
   coords <- get_coords(sf_obj = df_brut,
                        crs_init = crs_init,
@@ -54,4 +54,3 @@ clean_sd <- function(df_brut, crs_init = 2154, crs_fin = 4326)
   df
 
 }
-

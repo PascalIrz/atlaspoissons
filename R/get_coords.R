@@ -26,7 +26,10 @@
 #' # Coordonnees de la DR en WGS84
 #' get_coords(dr_ofb, crs_init = 27572)
 #' }
-get_coords <- function(sf_obj, crs_init, crs_fin = 4326, col_names = c("x_wgs84", "y_wgs84"))
+get_coords <- function(sf_obj,
+                       crs_init,
+                       crs_fin = 4326,
+                       col_names = c("x_wgs84", "y_wgs84"))
 
   {
 
