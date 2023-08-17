@@ -36,9 +36,11 @@ clean_fede <- function(df_brut,
   df <- df_brut %>%
     bind_cols(coords) %>%
     mutate(code_exutoire = NA,
+           code_point = NA_integer_,
            annee = lubridate::year(date_ope)) %>%
     select(code_exutoire,
            code_station = code_station_interne_fede,
+           code_point,
            localisation = nom_station_fede,
            x_wgs84,
            y_wgs84,
@@ -48,32 +50,6 @@ clean_fede <- function(df_brut,
            type_peche = protocole,
            code_espece = taxon,
            effectif)
-  # pivot_longer(cols = ABH:VAX,
-  #              names_to = "code_espece",
-  #              values_to = "effectif") %>%
-  # mutate(
-  #   code_station = NA,
-  #   date_peche = NA,
-  #   annee = NA,
-  #   localisation = NA,
-  #   source_donnee = "Fede 56"
-  # ) %>%
-  # select(
-  #   code_exutoire = IDD,
-  #   code_station,
-  #   localisation,
-  #   x_wgs84,
-  #   y_wgs84,
-  #   date_peche,
-  #   annee,
-  #   source_donnee,
-  #   type_peche = Ctxte_Pech,
-  #   code_espece,
-  #   effectif
-  # ) %>%
-  # mutate_at(vars(code_station, localisation, date_peche),
-  #           as.character) %>%
-  # filter(!is.na(code_exutoire)) # 2 observations sans IDD ont des coordonnées aberrantes
 
   df
 

@@ -33,8 +33,7 @@ clean_agence <- function(df_brut)
       ABH:VAR
     ) %>%
     mutate(annee = year(date_peche),
-         #  annee = as.character(annee),
-        #   annee = as.integer(annee),
+           code_point = NA_integer_,
            date_peche = as.character(date_peche)) %>%
     mutate_at(vars(ABH:VAR), replace_na, 0L) %>%
     pivot_longer(cols = ABH:VAR,
@@ -66,6 +65,7 @@ clean_agence <- function(df_brut)
     select(
       code_exutoire,
       code_station,
+      code_point,
       localisation,
       x_wgs84,
       y_wgs84,

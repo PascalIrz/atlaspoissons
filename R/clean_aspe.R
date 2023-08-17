@@ -62,6 +62,7 @@ clean_aspe <- function(passerelle)
     select(
       code_exutoire,
       code_station = sta_id,
+      code_point = pop_id,
       localisation = pop_libelle,
       x_wgs84,
       y_wgs84,

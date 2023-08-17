@@ -12,4 +12,4 @@ utils::globalVariables(c("ABH", "CD_STAT",  "IDD", "VAX", "X",  "Y",
                          ".", "Cours d'eau", "Espèce", "Type", "Nb Individus", "Cours.d.eau", "Nb.Individus",
                          "esp_nom_commun", "ope_id", "data_passerelle_taxo", "statut",
                          "code_station_interne_fede", "date_ope", "maitre_ouvrage nom_station_fede",
-                         "protocole taxon"))
+                         "protocole taxon", "maitre_ouvrage", "nom_station_fede", "protocole", "code_point", "taxon"))
