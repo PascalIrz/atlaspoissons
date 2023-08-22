@@ -23,8 +23,8 @@ ajouter_absence <- function(df) {
                 values_fill = 0) %>%
     pivot_longer(cols = -(code_exutoire:ope_id),
                  names_to = "code_espece",
-                 values_to = "effectif") %>%
-    filter(effectif == 0)
+                 values_to = "effectif") #%>%
+    #filter(effectif == 0)
 
   test
 
